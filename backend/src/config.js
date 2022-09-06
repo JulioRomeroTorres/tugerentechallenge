@@ -8,4 +8,5 @@ export default {
     root: process.env.ROOT || "",
     password: process.env.PASSWORD || "",
     port: process.env.PORT || "3000",
+    portdb: process.env.PORTDB || "3306",
 };

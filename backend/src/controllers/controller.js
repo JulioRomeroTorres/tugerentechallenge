@@ -4,15 +4,18 @@ import {getConnection} from '../databases/database.js'
 const getTotalinfo =  (req,res)=>{
     
     const mysqlConnection =  getConnection(); 
-    //const result = mysqlConnection.query('SELECT id, nameUser, age, addres  FROM users')   
-    
-    mysqlConnection.query(
-        'SELECT id, nameUser, age, addres  FROM users', (err, results, fields)=> {
-            console.log('Los errores', err)
-            console.log(results); // results contains rows returned by server
-            console.log(fields); // fields contains extra meta data about results, if available
+    const query = "SELECT * FROM users";
+
+    mysqlConnection.query(query, async (err, result) => {
+        if (err) {
+            err;
+        }
+        
+        console.log('result',result);
+        res.json(result);
+
         });
-    res.json({});
+
 }
 
 const getInfouser = (req,res)=>{
