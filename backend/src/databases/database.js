@@ -14,8 +14,8 @@ const getConnection = () =>{
     const query1 = "CREATE DATABASE IF NOT EXISTS tugerentedata ";
     const query2 = "USE tugerentedata";
     const query3 = "CREATE TABLE IF NOT EXISTS rooms(\
-                    id int(10) NOT NULL AUTO_INCREMENT,\
-                    numRoom tinyint NOT NULL,\
+                    id int(10) NOT NULL AUTO_INCREMENT UNIQUE,\
+                    numRoom tinyint NOT NULL UNIQUE,\
                     numberBeds tinyint NOT NULL, \
                     dimensions varchar(10) NOT NULL,\
                     isWifi tinyint NULL, \
@@ -25,8 +25,8 @@ const getConnection = () =>{
                     );" ;
     const query4 = "CREATE TABLE IF NOT EXISTS usersB(\
                     id int(10) NOT NULL AUTO_INCREMENT,\
-                    username varchar(10) NOT NULL, \
-                    lastName varchar(10) NOT NULL, \
+                    username varchar(10) NOT NULL UNIQUE  , \
+                    lastName varchar(10) NOT NULL UNIQUE  , \
                     email varchar(10) NOT NULL, \
                     phone varchar(10) NOT NULL,\
                     age tinyint NOT NULL,\
