@@ -81,21 +81,50 @@ const bookReservation = (req,res) =>{
         });
 
 
-    const customerBook = {
-        idRoom :     req.body.idRoom,
-        idUser :     req.body.idUser,
+    let customerBook = {
+        idRoom :     0,
+        idUser :     0,
         numberDays : req.body.numDays,
         statebBook:  req.body.stateBook,
         payment:     req.body.payment,
         methodPay:   req.body.methodPay
     }
     
-    const query3 = "INSERT INTO books SET ?";
-    mysqlConnection.query(query3, customerBook,  (err, result) => {
+    //const query3 = "INSERT INTO books SET ?";
+    const query4 = "SELECT max(id) as ans FROM usersb "
+    const query5 = "SELECT max(id) as ans FROM rooms "
+    const query6 = "INSERT INTO books SET ?";
+
+    mysqlConnection.query(query4, customerBook,  (err, result) => {
         if (err) {
             err;
         }
+
+        idUser = result.ans;
+
         
+        mysqlConnection.query(query5, customerBook,  (err, result) => {
+            if (err) {
+                err;
+            }
+    
+            idRoom = result.ans;
+            
+            customerBook.idRoom = idRoom;
+            customerBook.idUser = idUser;
+            
+            mysqlConnection.query(query6, customerBook,  (err, result) => {
+                if (err) {
+                    err;
+                }
+        
+                console.log('My Result in Book Post',result);
+                res.send('Book created');
+    
+                });
+
+            });
+
         console.log('My Result in Books Post',result);
         res.send('Reservation created');
 
