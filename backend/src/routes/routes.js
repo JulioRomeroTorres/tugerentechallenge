@@ -9,8 +9,8 @@ router.get('/', routerMethods.getTotalbooks);
 
 //Create, update and Delete Resevation
 router.get('/book/:idBook', routerMethods.getInforeservation );
-router.post('/book/:idBook', routerMethods.bookReservation);
-router.put('/book', routerMethods.updateReservation);
+router.post('/book', routerMethods.bookReservation);
+router.put('/book/:idBook', routerMethods.updateReservation);
 router.delete('/book/:idBook', routerMethods.deleteReservation);
 
 //Get and Update an specific information of User 

@@ -45,7 +45,7 @@ const bookReservation = (req,res) =>{
         dimensions : req.body.dimensions,
         isWifi:      req.body.isWifi,
         isPhone:     req.body.isPhone,
-        isTv :       req.body.isPhone 
+        isTv :       req.body.isTv 
     }
 
     const customerUser = {
@@ -64,9 +64,7 @@ const bookReservation = (req,res) =>{
             err;
         }
         
-        console.log('My Result in User Post',result);
-        res.send('User  created');
-
+        console.log('My Result in User Post');
         });
     
     const query2 = "INSERT INTO rooms SET ?";
@@ -75,17 +73,14 @@ const bookReservation = (req,res) =>{
             err;
         }
         
-        console.log('My Result in Room Post',result);
-        res.send('Room created');
-
+        console.log('My Result in Room Post');
         });
 
-
     let customerBook = {
-        idRoom :     0,
-        idUser :     0,
+        idRoom :     100,
+        idUser :     100,
         numberDays : req.body.numDays,
-        statebBook:  req.body.stateBook,
+        stateBook:  req.body.stateBook,
         payment:     req.body.payment,
         methodPay:   req.body.methodPay
     }
@@ -94,41 +89,59 @@ const bookReservation = (req,res) =>{
     const query4 = "SELECT max(id) as ans FROM usersb "
     const query5 = "SELECT max(id) as ans FROM rooms "
     const query6 = "INSERT INTO books SET ?";
+    const query7 = "SELECT * FROM  books";
+    
+    let idUser,idRoom;
 
-    mysqlConnection.query(query4, customerBook,  (err, result) => {
+    /*mysqlConnection.query(query7, customerBook,  (err, result) => {
+        if (err) {
+            err;
+        }
+        console.log('My Result in post books table',result);
+        console.log('my costumer', customerBook )
+        res.send('Book created');
+
+    });*/
+
+    mysqlConnection.query(query4, (err, result) => {
         if (err) {
             err;
         }
 
-        idUser = result.ans;
+        idUser = result;
 
+        console.log('My Result in get ID of  usersb table ',result);
         
-        mysqlConnection.query(query5, customerBook,  (err, result) => {
+        mysqlConnection.query(query5, (err, result) => {
             if (err) {
                 err;
             }
     
-            idRoom = result.ans;
+            idRoom = result;
             
-            customerBook.idRoom = idRoom;
-            customerBook.idUser = idUser;
+            customerBook.idRoom = idRoom[0].ans;
+            customerBook.idUser = idUser[0].ans;
+
+            console.log('My Result in get ID of  rooms table ',result);
+
+            //Debugging id
+            console.log('----idUser-----', idUser[0].ans);
+            console.log('----idRoom-----', idRoom[0].ans);
             
+            console.log('El costumer ',customerBook)  
+
             mysqlConnection.query(query6, customerBook,  (err, result) => {
                 if (err) {
                     err;
                 }
-        
-                console.log('My Result in Book Post',result);
+                console.log('My Result in post books table',result);
                 res.send('Book created');
-    
-                });
 
             });
 
-        console.log('My Result in Books Post',result);
-        res.send('Reservation created');
-
+            
         });
+    });
 };
 
 //Funcion Lista Para usarse
