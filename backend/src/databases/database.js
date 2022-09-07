@@ -25,10 +25,10 @@ const getConnection = () =>{
                     );" ;
     const query4 = "CREATE TABLE IF NOT EXISTS usersB(\
                     id int(10) NOT NULL AUTO_INCREMENT,\
-                    username varchar(10) NOT NULL UNIQUE  , \
-                    lastName varchar(10) NOT NULL UNIQUE  , \
-                    email varchar(10) NOT NULL, \
-                    phone varchar(10) NOT NULL,\
+                    username varchar(15) NOT NULL UNIQUE  , \
+                    lastName varchar(15) NOT NULL UNIQUE  , \
+                    email varchar(20) NOT NULL, \
+                    phone varchar(12) NOT NULL,\
                     age tinyint NOT NULL,\
                     gender tinyint NULL,\
                     PRIMARY KEY (id)\
@@ -42,7 +42,7 @@ const getConnection = () =>{
                     payment float NOT NULL,\
                     methodPay varchar(10) NOT NULL,\
                     PRIMARY KEY (id),\
-                    FOREIGN KEY(idUsuario) REFERENCES usersB(id),\
+                    FOREIGN KEY(idUser) REFERENCES usersb(id),\
                     FOREIGN KEY(idRoom) REFERENCES rooms(id)\
                     );";  
 
