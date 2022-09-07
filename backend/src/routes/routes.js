@@ -7,6 +7,8 @@ const router = Router();
 
 router.get('/', routerMethods.getTotalinfo);
 
+router.post('/book', routerMethods.bookReservation)
+
 router.get('/user/:id', routerMethods.getInfouser)
 
 export default router;

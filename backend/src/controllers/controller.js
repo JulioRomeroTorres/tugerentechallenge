@@ -1,29 +1,60 @@
 //Define functions of endpoitns
 import {getConnection} from '../databases/database.js'
 
-const getTotalinfo =  (req,res)=>{
+const getTotalbooks =  (req,res)=>{
     
     const mysqlConnection =  getConnection(); 
-    const query = "SELECT * FROM users";
+    const query = "SELECT * FROM books";
 
-    mysqlConnection.query(query, async (err, result) => {
+    mysqlConnection.query(query, (err, result) => {
+        if (err) {
+            err;
+        }
+        console.log('result',result);
+        
+        res.json(result);
+        //res.send('Get all elements in table');
+        });
+}
+
+const getInfoBook = (req,res)=>{
+    
+    const mysqlConnection =  getConnection(); 
+    const query = `SELECT * FROM books WHERE id = ${req.params.id}`;
+
+    mysqlConnection.query(query, (err, result) => {
+        if (err) {
+            err;
+        }
+        res.json(result);
+        });
+    
+}
+
+const createBook = (req,res) =>{
+
+    const mysqlConnection =  getConnection(); 
+
+    const customerBook = {
+        nameUser : req.body.name,
+        age : req.body.age,
+        addres : req.body.address
+    }
+    
+    const query = "INSERT INTO users SET ?";
+    mysqlConnection.query(query, customerBook,  (err, result) => {
         if (err) {
             err;
         }
         
-        console.log('result',result);
-        res.json(result);
+        console.log('My Result in Post',result);
+        res.send('Reservation created');
 
         });
-
-}
-
-const getInfouser = (req,res)=>{
-    console.log(`Mi prrimer usurio tiene id ${req.params.id} `)
-    res.send('Pimer usuario')
 }
 
 export const methods = {
     getTotalinfo,
     getInfouser,
+    bookReservation,
 };
