@@ -11,12 +11,14 @@ services:
       - mysqlDatabase
   mysqlDatabase:
     image: mysql:8.0
-    container_name: mysqltugerente
     command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    container_name: mysqltugerente
     environment:
       - MYSQL_DATABASE=tugerentedata
       - MYSQL_PASSWORD=root123
       - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - 23306:3306
     volumes:

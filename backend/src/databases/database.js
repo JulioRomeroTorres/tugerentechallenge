@@ -3,7 +3,7 @@ import internal from 'stream';
 import config from '../config.js'
 
 var connection = mysql.createConnection({
-    host: "localhost",
+    host: "mysqltugerente",
     user: "root",
     password: "root123",
     port:3306

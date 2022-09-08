@@ -17,6 +17,6 @@ router.delete('/book/:idBook', routerMethods.deleteReservation);
 router.get('/book/:idBook/user/:idUser', routerMethods.getInfouser);
 router.put('/book/:idBook/user/:idUser', routerMethods.updateUser);
 
-router.put('/*', routerMethods.getTotalbooks);
+router.get('/*', routerMethods.getTotalbooks);
 
 export default router;
