@@ -185,7 +185,7 @@ const deleteReservation = (req,res) => {
 
 const getInfouser = (req,res) =>{
     const mysqlConnection =  getConnection(); 
-    const query = `SELECT * FROM users WHERE id = ${req.params.idUser}`;
+    const query = `SELECT * FROM usersb WHERE id = ${req.params.idUser}`;
     mysqlConnection.query(query, (err, result) => {
         if (err) {
             err;
@@ -208,7 +208,7 @@ const updateUser = (req,res) => {
         age:        req.body.age,
         gender :    req.body.gender,
     }
-    const query = `UPDATE usersb SET ? WHERE id = ${req.idUser}`;
+    const query = `UPDATE usersb SET ? WHERE id = ${req.params.idUser}`;
     mysqlConnection.query(query, customerUser,  (err, result) => {
         if (err) {
             err;
