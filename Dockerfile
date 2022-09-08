@@ -4,5 +4,5 @@ WORKDIR /home/tugerente
 COPY . .
 WORKDIR ./backend
 RUN npm install
-#EXPOSE 3306
+EXPOSE 3000
 CMD npm run dev

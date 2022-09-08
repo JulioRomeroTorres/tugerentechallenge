@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  express:
+    container_name: nodetugerente
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:3000
+    depends_on:
+      - mysqlDatabase
+  mysqlDatabase:
+    image: mysql:8.0
+    container_name: mysqltugerente
+    environment:
+      - MYSQL_DATABASE=tugerentedata
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root123
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_HOST=localhost
+    ports:
+      - 23306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
+
