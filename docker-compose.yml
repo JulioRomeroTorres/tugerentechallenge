@@ -9,19 +9,25 @@ services:
       - 4000:3000
     depends_on:
       - mysqlDatabase
+    networks:
+      - internalnet
   mysqlDatabase:
     image: mysql:8.0
     container_name: mysqltugerente
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       - MYSQL_DATABASE=tugerentedata
-      - MYSQL_USER=root
       - MYSQL_PASSWORD=root123
       - MYSQL_ROOT_PASSWORD=root123
-      - MYSQL_HOST=localhost
     ports:
       - 23306:3306
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - internalnet
 volumes:
   mysql-data:
+networks:
+  internalnet:
+    driver: bridge
 

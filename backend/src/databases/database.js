@@ -6,7 +6,6 @@ var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "root123",
-    database: "tugerentedata",
     port:3306
 });
 
@@ -24,7 +23,7 @@ const getConnection = () =>{
                     isTV tinyint  NULL,\
                     PRIMARY KEY (id)\
                     );" ;
-    const query4 = "CREATE TABLE IF NOT EXISTS usersB(\
+    const query4 = "CREATE TABLE IF NOT EXISTS usersb(\
                     id int(10) NOT NULL AUTO_INCREMENT,\
                     username varchar(15) NOT NULL UNIQUE  , \
                     lastName varchar(15) NOT NULL UNIQUE  , \
