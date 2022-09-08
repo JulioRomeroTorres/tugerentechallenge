@@ -4,17 +4,16 @@ To achieve this challenge I consider that we can define following endpoints with
 	**Method GET**: In this route, we can get all information of the database, it is necessary to know all parameters of our clients. 
 	<img align="center"  src="./otherfiles/get.PNG"  width="500" height="500">
 					 											*Picture 1*
-	
 	- *'/book'*
-	  **Method POST**: In this route we can create a reservation with parameters showed in picture 1.
+	  **Method POST**: In this route we can create a reservation with parameters showed in picture 2.
 	  <img align="center"   src="./otherfiles/postbook.PNG"  width="600" height="400">
 	  																		*Picture 2*
-	
 - *'/book/:idBook'*
    **Method GET**: In this route we can get information of an specific reservation, it is useful to know methods which we can contact with client or the state of the reservation.
 
    <img align="center" src="./otherfiles/getbook.PNG"  width="600" height="500">
-   																			*Picture 3*
+
+*Picture 3*
     **Method PUT**: If the client want to change something of his reservation, for example the number of beds or how many days he will be staying, we can change this parameter.
 
    <img align="center" src="./otherfiles/updatebook.PNG"  width="700" height="400">
