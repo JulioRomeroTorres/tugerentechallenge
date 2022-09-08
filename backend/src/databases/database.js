@@ -3,7 +3,7 @@ import internal from 'stream';
 import config from '../config.js'
 
 var connection = mysql.createConnection({
-    host: "mysqltugerente",
+    host: "localhost",
     user: "root",
     password: "root123",
     port:3306
@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 const getConnection = () =>{
     console.log('We are going to verify conection with Mysql database');  
-    const query1 = "CREATE DATABASE IF NOT EXISTS tugerentedata ";
+    const query1 = "CREATE DATABASE IF NOT EXISTS tugerentedata;";
     const query2 = "USE tugerentedata";
     const query3 = "CREATE TABLE IF NOT EXISTS rooms(\
                     id int(10) NOT NULL AUTO_INCREMENT UNIQUE,\

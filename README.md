@@ -1,15 +1,15 @@
 # TuGerente Challenge
 So develop this challenge I consider that we can define these endpoints,
-- '/'
+- *'/'*
 	**Method GET**: In this route we can use method get and the administrator can get all information of the database. 
+	<img align='center' src="./otherfiles/get.PNG"  width="500" height="500">
+	
 	**Method POST**:
-- '/book/'
+- *'/book/'*
 
 Also I define the database with the above structure:
 
-![Datbase](./otherfiles/Datbase.PNG)
-
-
+<img align='center' src="./otherfiles/Datbase.PNG"  width="500" height="500">
 
 ## Instruccions
 If you don't want to run docker container and test the project in your computer, you can run the following commands:
