@@ -7,7 +7,7 @@ To achieve this challenge I consider that we can define following endpoints with
 	
 	- *'/book'*
 	  **Method POST**: In this route we can create a reservation with parameters showed in picture 1.
-	  <img align="center"   src="./otherfiles/Postbook.PNG"  width="600" height="400">
+	  <img align="center"   src="./otherfiles/postbook.PNG"  width="600" height="400">
 	  																		*Picture 2*
 	
 - *'/book/:idBook'*
