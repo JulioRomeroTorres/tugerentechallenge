@@ -9,8 +9,6 @@ services:
       - 4000:3000
     depends_on:
       - mysqlDatabase
-    networks:
-      - internalnet
   mysqlDatabase:
     image: mysql:8.0
     container_name: mysqltugerente
@@ -23,11 +21,7 @@ services:
       - 23306:3306
     volumes:
       - mysql-data:/var/lib/mysql
-    networks:
-      - internalnet
 volumes:
   mysql-data:
-networks:
-  internalnet:
-    driver: bridge
+
 
